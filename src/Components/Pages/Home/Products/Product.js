@@ -1,15 +1,17 @@
 import React from 'react';
 
 const Product = (props) => {
-    const { name, price, stock } = props.product
+    const { name, price, stock, img } = props.product
     return (
-        <div class="card w-96 bg-base-100 shadow-xl">
-            <figure><img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" /></figure>
-            <div class="card-body">
-                <h2 class="card-title">{name}</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
+        <div className="card lg:max-w-lg bg-base-100 shadow-md">
+            <figure><img src={img} className='p-5' alt="Shoes" /></figure>
+            <div className="card-body items-center">
+                <h2 className="card-title text-center">{name}</h2>
+                {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
+                <p>Price: ${price}</p>
+                <p>Stock: {stock}</p>
+                <div className="card-actions justify-center">
+                    <button className="btn btn-primary ">Buy Now</button>
                 </div>
             </div>
         </div>
