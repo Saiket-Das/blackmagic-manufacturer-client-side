@@ -8,9 +8,8 @@ import { toast } from 'react-toastify';
 
 
 const Checkout = ({ checkoutProduct, setCheckoutProduct, refetch }) => {
-    const { name, price, stock } = checkoutProduct;
-
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const { _id, price, name, stock } = checkoutProduct;
+    const { register, formState: { errors }, handleSubmit } = useForm();
 
     const [user] = useAuthState(auth)
 
@@ -23,7 +22,8 @@ const Checkout = ({ checkoutProduct, setCheckoutProduct, refetch }) => {
             quantity: data.quantity,
             phone: data.phone,
             city: data.city,
-            address: data.address
+            address: data.address,
+            amount: price * data.quantity
         }
         console.log(order)
 
@@ -40,7 +40,28 @@ const Checkout = ({ checkoutProduct, setCheckoutProduct, refetch }) => {
                     toast.success('Your order is done.')
                     e.target.reset();
                 }
+                setCheckoutProduct(null);
             })
+
+
+        const updatedStock = stock - data.quantity;
+        const currentStock = { stock: updatedStock }
+        const url = `http://localhost:5000/products/${_id}`
+        console.log(url)
+        fetch(`http://localhost:5000/products/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentStock)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                toast.success('Stock updated');
+                refetch()
+            })
+
     }
 
     return (
@@ -132,7 +153,7 @@ const Checkout = ({ checkoutProduct, setCheckoutProduct, refetch }) => {
                                 placeholder="Quantity"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("quantity",
-                                    { required: true, min: 1000, max: `${stock}` })
+                                    { required: true, min: 500, max: `${stock}` })
                                 }
                             />
                             <label className="label">
@@ -144,13 +165,13 @@ const Checkout = ({ checkoutProduct, setCheckoutProduct, refetch }) => {
 
                                 {errors.quantity?.type === 'min' &&
                                     <span className="label-text-alt text-red-500">
-                                        At-least select more than 1000.
+                                        At-least order 500.
                                     </span>
                                 }
 
                                 {errors.quantity?.type === 'max' &&
                                     <span className="label-text-alt text-red-500">
-                                        You exceed our available stock.
+                                        Your total order's quantity exceed our available stock.
                                     </span>
                                 }
                             </label>
