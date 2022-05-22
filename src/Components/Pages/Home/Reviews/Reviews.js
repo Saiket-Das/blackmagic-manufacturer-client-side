@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Review from './Review';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight as fasFaStar } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight as faArrow } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
 
@@ -29,7 +29,7 @@ const Reviews = () => {
 
                     <div className="card-body items-center justify-center	">
                         <div className='bg-gray-100 p-3 rounded-full'>
-                            <FontAwesomeIcon className='text-3xl' icon={fasFaStar} />
+                            <FontAwesomeIcon className='text-3xl' icon={faArrow} />
                         </div>
                         <Link to='/login'>
                             <span className='text-xl'>See more reviews</span>
