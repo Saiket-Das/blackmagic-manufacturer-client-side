@@ -1,0 +1,106 @@
+.frame {
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+button {
+    margin: 20px;
+    outline: none;
+}
+
+.custom-btn {
+    width: 200px;
+    height: 40px;
+    padding: 10px 25px;
+    border: 2px solid #235789;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.see-all-btn {
+    background: #235789;
+    color: #fff;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.see-all-btn span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.see-all-btn:before,
+.see-all-btn:after {
+    position: absolute;
+    content: "";
+    height: 0%;
+    width: 2px;
+    background: #235789;
+}
+
+.see-all-btn:before {
+    right: 0;
+    top: 0;
+    transition: all 500ms ease;
+}
+
+.see-all-btn:after {
+    left: 0;
+    bottom: 0;
+    transition: all 500ms ease;
+}
+
+.see-all-btn:hover {
+    color: #235789;
+    background: transparent;
+}
+
+.see-all-btn:hover:before {
+    transition: all 500ms ease;
+    height: 100%;
+}
+
+.see-all-btn:hover:after {
+    transition: all 500ms ease;
+    height: 100%;
+}
+
+.see-all-btn span:before,
+.see-all-btn span:after {
+    position: absolute;
+    content: "";
+    background: #235789;
+}
+
+.see-all-btn span:before {
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 2px;
+    transition: all 500ms ease;
+}
+
+.see-all-btn span:after {
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    transition: all 500ms ease;
+}
+
+.see-all-btn span:hover:before {
+    width: 100%;
+}
+
+.see-all-btn span:hover:after {
+    width: 100%;
+}

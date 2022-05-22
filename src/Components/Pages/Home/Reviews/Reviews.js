@@ -31,7 +31,7 @@ const Reviews = () => {
                         <div className='bg-gray-100 p-3 rounded-full'>
                             <FontAwesomeIcon className='text-3xl' icon={faArrow} />
                         </div>
-                        <Link to='/login'>
+                        <Link to='/'>
                             <span className='text-xl'>See more reviews</span>
                         </Link>
 

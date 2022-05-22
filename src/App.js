@@ -4,11 +4,13 @@ import Dashboard from './Components/Pages/Dashboard/Dashboard/Dashboard';
 import AddReview from './Components/Pages/Dashboard/Users/AddReview/AddReview';
 import MyOrders from './Components/Pages/Dashboard/Users/MyOrders/MyOrders';
 import Home from './Components/Pages/Home/Main/Home';
+import Checkout from './Components/Pages/Home/Products/Checkout/Checkout';
 import Login from './Components/Pages/Login/Login/Login';
 import RequireAuth from './Components/Pages/Login/RequireAuth/RequireAuth';
 import SignUp from './Components/Pages/Login/SignUp/SignUp';
 import Header from './Components/Shared/Header/Header';
 import NotFound from './Components/Shared/NotFound/NotFound';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -29,8 +31,16 @@ function App() {
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
 
+        <Route path='/purchase'
+          element={
+            <RequireAuth>
+              <Checkout></Checkout>
+            </RequireAuth>
+          }>
+        </Route>
 
-        <Route path='dashboard'
+
+        <Route path='/dashboard'
           element={
             <RequireAuth>
               <Dashboard></Dashboard>
@@ -38,13 +48,14 @@ function App() {
           }>
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path='addReview' element={<AddReview></AddReview>}></Route>
-
-
         </Route>
 
 
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+
+
+      <ToastContainer />
 
     </div>
   );

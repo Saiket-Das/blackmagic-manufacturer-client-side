@@ -2,8 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWarehouse as faStock } from '@fortawesome/free-solid-svg-icons'
 
-const Product = (props) => {
-    const { name, price, stock, img, description } = props.product
+
+
+const Product = ({ product, setCheckoutProduct }) => {
+    const { name, price, stock, img, description } = product
     return (
         <div className="card lg:max-w-lg bg-base-100 shadow-md border-0">
             <figure><img src={img} className='p-5' alt="Shoes" /></figure>
@@ -24,8 +26,15 @@ const Product = (props) => {
 
 
                 <div className="card-actions justify-center">
-                    <button className="btn btn-primary px-9">Buy Now</button>
+                    <label
+                        htmlFor="purchase-modal"
+                        onClick={() => setCheckoutProduct(product)}
+                        className="btn btn-primary"
+                    >Purchase</label>
+
                 </div>
+
+
 
             </div>
         </div>
