@@ -76,12 +76,12 @@ const Review = (props) => {
         </span>
     }
     return (
-        <div className="card lg:max-w-lg bg-base-100 shadow-md">
+        <div className="card review-card lg:max-w-lg bg-base-100 shadow-md">
             <div className="card-body ">
                 <h2 className="card-title block">{name}
                 </h2>
-                <span>{email}</span>
-                <p> <span>{comment}</span></p>
+                <span className='opacity-50'>{email}</span>
+                <p><span>{comment}</span></p>
                 <p>Total Review: {ratingsCount}</p>
                 <p className='text-orange-500'>{starReview}</p>
 
