@@ -9,8 +9,8 @@ library.add(fasFaStar, faStarHalfAlt)
 
 
 const Review = (props) => {
-    const { name, email, start, ratingsCount, comment } = props.review
-    const rating = parseFloat(start)
+    const { name, email, star, comment } = props.review
+    const rating = parseFloat(star)
 
     let starReview;
 
@@ -82,7 +82,6 @@ const Review = (props) => {
                 </h2>
                 <span className='opacity-50'>{email}</span>
                 <p><span>{comment}</span></p>
-                <p>Total Review: {ratingsCount}</p>
                 <p className='text-orange-500'>{starReview}</p>
 
             </div>

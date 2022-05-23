@@ -12,9 +12,9 @@ const Banner = () => {
                         <img src={banner} alt="" />
                     </figure>
 
-                    <div className="card-body lg:mt-24 items-center">
-                        <h2 className="card-title text-3xl">What we do actually?</h2>
-                        <p className='border-2 lg:w-96 text-xl'>Lenses are made of optical glass or plasti made of optical glass or plastic. Lenses are made of optical glass or plastic.</p>
+                    <div className="card-body lg:mt-48 items-center">
+                        <h2 className="card-title text-3xl text-secondary uppercase">What we do actually?</h2>
+                        <p className='lg:w-4/5 text-xl'>Lenses are made of optical glass or plasti made of optical glass or plastic. Lenses are made of optical glass or plastic.</p>
                     </div>
                 </div>
             </div>

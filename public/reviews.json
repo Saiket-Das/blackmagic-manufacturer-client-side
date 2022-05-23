@@ -1,26 +1,20 @@
 [
     {
-        "id": 1,
         "name": "Ahan Bryan",
-        "email": "saiketdas02@gmail.com",
-        "start": 4,
-        "ratingsCount": 3725,
+        "email": "dassaiket@gmail.com",
+        "star": 4,
         "comment": "The 50mm is also great for portraits. Anything close-up I'd say."
     },
     {
-        "id": 2,
         "name": "Mohammud Noor",
         "email": "mdnoor@gmail.com",
-        "start": 5,
-        "ratingsCount": 3725,
+        "star": 5,
         "comment": "The 50mm is also great for portraits. Anything close-up I'd say."
     },
     {
-        "id": 3,
         "name": "Ar Shojib",
         "email": "arshojib@gmail.com",
-        "start": 5,
-        "ratingsCount": 3725,
+        "star": 5,
         "comment": "The 50mm is also great for portraits. Anything close-up I'd say."
     }
 ]

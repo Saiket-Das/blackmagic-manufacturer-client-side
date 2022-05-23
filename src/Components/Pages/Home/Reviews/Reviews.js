@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch('reviews.json')
+        fetch('http://localhost:5000/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -19,7 +19,7 @@ const Reviews = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-8 lg:p-40 p-8'>
                 {
                     reviews.slice(-3).map(review => <Review
-                        key={review.id}
+                        key={review._id}
                         review={review}
                     ></Review>)
                 }
@@ -31,7 +31,7 @@ const Reviews = () => {
                         <div className='bg-gray-100 p-3 rounded-full'>
                             <FontAwesomeIcon className='text-3xl' icon={faArrow} />
                         </div>
-                        <Link to='/'>
+                        <Link to='/reviews'>
                             <span className='text-xl'>See more reviews</span>
                         </Link>
 

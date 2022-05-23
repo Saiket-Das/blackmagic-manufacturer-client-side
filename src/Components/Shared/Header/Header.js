@@ -44,7 +44,7 @@ const Header = () => {
                         </div>
                         <img src={logo} className='w-12  lg:d-block' alt="" />
                         <Link to='/'
-                            className="btn btn-ghost normal-case text-2xl font-bold">
+                            className="btn btn-ghost normal-case text-3xl font-bold">
                             <span className='text-secondary pr-2'>Black </span>
                             <span className='text-primary'> Magic</span>
                         </Link>
@@ -55,10 +55,11 @@ const Header = () => {
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal p-0">
                             <li><Link to='/home'>Home</Link></li>
+                            <li><Link to='/blogs'>Blog</Link></li>
                             <li><Link to='/about'>About</Link></li>
-                            <li><Link to='/appointment'>Appoinment</Link></li>
 
-                            {user && <li><Link to='/dashboard'>Dashboard</Link></li>
+                            {
+                                user && <li><Link to='/dashboard'>Dashboard</Link></li>
                             }
 
                         </ul>
