@@ -1,8 +1,9 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
+import useJwtToken from '../../../Hooks/useJwtToken';
 import Loading from '../../../Shared/Loading/Loading';
 
 
@@ -15,11 +16,15 @@ const SignUp = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [jwtToken] = useJwtToken(user || googleUser);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    if (user || googleUser) {
-        navigate('/')
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+    if (jwtToken) {
+        navigate(from, { replace: true } || '/');
     }
 
     if (loading || googleLoading || updating) {

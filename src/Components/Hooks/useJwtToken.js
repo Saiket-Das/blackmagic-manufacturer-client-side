@@ -5,10 +5,10 @@ const useJwtToken = (user) => {
 
     useEffect(() => {
         const email = user?.user?.email;
-        const currentEmail = { email: email }
+        const currentEmail = { email: email };
 
         if (email) {
-            fetch(`https://nameless-headland-38045.herokuapp.com/users/${email}`, {
+            fetch(`http://localhost:5000/users/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
@@ -17,7 +17,8 @@ const useJwtToken = (user) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    const accessToken = data.accessToken;
+                    const accessToken = data.token;
+                    console.log(data)
                     localStorage.setItem('accessToken', accessToken);
                     setJwtToken(accessToken)
                 })

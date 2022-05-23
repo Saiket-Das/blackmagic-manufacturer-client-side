@@ -14,6 +14,9 @@ import { ToastContainer } from 'react-toastify';
 import MyProfile from './Components/Pages/MyProfile/MyProfile';
 import Inventory from './Components/Pages/Home/Products/Inventory/Inventory';
 import 'react-toastify/dist/ReactToastify.css';
+import ManageOrders from './Components/Pages/Dashboard/Admin/ManageOrders/ManageOrders';
+import MakeAdmin from './Components/Pages/Dashboard/Admin/MakeAdmin/MakeAdmin';
+import UserList from './Components/Pages/Dashboard/Admin/MakeAdmin/UserList/UserList';
 
 
 
@@ -68,6 +71,8 @@ function App() {
           }>
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path='addReview' element={<AddReview></AddReview>}></Route>
+          <Route path='manageOrder' element={<ManageOrders></ManageOrders>}></Route>
+          <Route path='makeAdmin' element={<UserList></UserList>}></Route>
         </Route>
 
 

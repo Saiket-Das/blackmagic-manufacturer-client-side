@@ -20,10 +20,10 @@ const Login = () => {
 
 
     useEffect(() => {
-        if (user || googleUser) {
+        if (jwtToken) {
             navigate(from, { replace: true } || '/');
         }
-    }, [user, googleUser, navigate, from]);
+    }, [jwtToken, navigate, from]);
 
     if (loading || googleLoading) {
         return <Loading></Loading>

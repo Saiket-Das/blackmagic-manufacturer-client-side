@@ -12,6 +12,8 @@ import { faTruck as delivery } from '@fortawesome/free-solid-svg-icons'
 import { faTrash as cancel } from '@fortawesome/free-solid-svg-icons'
 import Order from './Order';
 import CancelModal from './CancelModal/CancelModal';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 
 
 
@@ -20,10 +22,23 @@ const MyOrders = () => {
     const [deleteOrder, setDeleteOrder] = useState(null);
     const [user] = useAuthState(auth);
     const email = user.email;
+    const navigate = useNavigate()
 
     const { data: orders, isLoading, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/orders?email=${email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/orders?email=${email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    navigate('/');
+                    signOut(auth);
+                    localStorage.removeItem('accessToken');
+                }
+                return res.json()
+            })
     )
 
     if (isLoading) {

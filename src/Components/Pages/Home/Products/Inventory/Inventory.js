@@ -8,7 +8,6 @@ import InventoryProduct from './InventoryProduct';
 
 const Inventory = () => {
     const [checkoutProduct, setCheckoutProduct] = useState(null);
-    console.log(checkoutProduct)
     const { data: productList, isLoading, refetch } = useQuery('products', () =>
         fetch('http://localhost:5000/products')
             .then(res => res.json())
