@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 import Loading from '../../../Shared/Loading/Loading';
-import Checkout from './Checkout/Checkout';
+// import Checkout from './Checkout/Checkout';
 // import { Link } from 'react-router-dom';
 import Product from './Product';
 import './Products.css'
 
 
 const Products = () => {
-
-    const [checkoutProduct, setCheckoutProduct] = useState(null);
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/products')
-    //         .then(res => res.json())
-    //         .then(data => setProducts(data))
-    // }, [])
 
 
     const { data: products, isLoading, refetch } = useQuery('products', () =>
@@ -34,28 +28,21 @@ const Products = () => {
                         <Product
                             key={product._id}
                             product={product}
-                            setCheckoutProduct={setCheckoutProduct}
                         ></Product>)
                 }
             </div>
 
-            {checkoutProduct && <Checkout
-                checkoutProduct={checkoutProduct}
-                setCheckoutProduct={setCheckoutProduct}
-                refetch={refetch}
-            ></Checkout>
-            }
 
 
-            {/* <div className='frame'>
-                <Link to='/allProducts'>
+            <div className='frame'>
+                <Link to='/inventory'>
                     <button className="custom-btn see-all-btn">
                         <span>
                             See more products
                         </span>
                     </button>
                 </Link>
-            </div> */}
+            </div>
         </div>
     );
 };

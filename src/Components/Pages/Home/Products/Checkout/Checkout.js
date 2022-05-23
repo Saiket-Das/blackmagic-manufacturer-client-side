@@ -37,7 +37,7 @@ const Checkout = ({ checkoutProduct, setCheckoutProduct, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
-                    toast.success('Your order is done.')
+                    toast.success('Your order successful.')
                     e.target.reset();
                 }
                 setCheckoutProduct(null);
@@ -57,8 +57,6 @@ const Checkout = ({ checkoutProduct, setCheckoutProduct, refetch }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                toast.success('Stock updated');
                 refetch()
             })
 

@@ -35,8 +35,9 @@ const Header = () => {
                             </label>
                             <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><Link to='/home'>Home</Link></li>
-                                <li><Link to='/about'>About</Link></li>
-                                <li><Link to='/appointment'>Appoinment</Link></li>
+                                <li><Link to='/inventory'>Inventory</Link></li>
+                                <li><Link to='/myProfile'>My Profile</Link></li>
+                                <li><Link to='/blogs'>Blog</Link></li>
                                 {user && <li><Link to='/dashboard'>Dashboard</Link></li>
                                 }
 
@@ -55,8 +56,9 @@ const Header = () => {
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal p-0">
                             <li><Link to='/home'>Home</Link></li>
+                            <li><Link to='/inventory'>Inventory</Link></li>
+                            <li><Link to='/myProfile'>My Profile</Link></li>
                             <li><Link to='/blogs'>Blog</Link></li>
-                            <li><Link to='/about'>About</Link></li>
 
                             {
                                 user && <li><Link to='/dashboard'>Dashboard</Link></li>

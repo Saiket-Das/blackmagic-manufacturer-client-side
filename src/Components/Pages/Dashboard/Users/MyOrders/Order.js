@@ -2,8 +2,11 @@ import React from 'react';
 
 
 
-const Order = ({ order, index, refetch }) => {
+const Order = ({ order, index, refetch, setDeleteOrder }) => {
     const { productName, quantity, amount } = order
+
+
+
     return (
         <tr>
             <th>{index + 1}</th>
@@ -13,12 +16,20 @@ const Order = ({ order, index, refetch }) => {
 
             <td>Pending</td>
             <td>
-                <button className="btn btn-outline btn-sm btn-secondary">Not Paid</button>
+                <button
+                    className="btn btn-outline btn-sm btn-secondary">
+                    Pay
+                </button>
             </td>
 
-            {/* <td>
-                <button className="btn btn-outline btn-sm btn-secondary">Pending</button>
-            </td> */}
+            <td>
+                <label
+                    onClick={() => setDeleteOrder(order)}
+                    className="btn btn-outline btn-sm btn-secondary"
+                    htmlFor="cancel-confirm-modal"
+                >Remove
+                </label>
+            </td>
 
 
         </tr>

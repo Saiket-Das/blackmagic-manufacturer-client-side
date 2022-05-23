@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../../firebase.init';
 import Loading from '../../../Shared/Loading/Loading';
+import useJwtToken from '../../../Hooks/useJwtToken';
 
 
 
@@ -12,6 +13,7 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [signInWithEmailAndPassword, user, loading, emailError,] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const [jwtToken] = useJwtToken(user || googleUser);
     const navigate = useNavigate()
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -21,7 +23,7 @@ const Login = () => {
         if (user || googleUser) {
             navigate(from, { replace: true } || '/');
         }
-    }, [user, navigate, from]);
+    }, [user, googleUser, navigate, from]);
 
     if (loading || googleLoading) {
         return <Loading></Loading>

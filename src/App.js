@@ -11,6 +11,9 @@ import SignUp from './Components/Pages/Login/SignUp/SignUp';
 import Header from './Components/Shared/Header/Header';
 import NotFound from './Components/Shared/NotFound/NotFound';
 import { ToastContainer } from 'react-toastify';
+import MyProfile from './Components/Pages/MyProfile/MyProfile';
+import Inventory from './Components/Pages/Home/Products/Inventory/Inventory';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -18,6 +21,7 @@ function App() {
 
   return (
     <div className="">
+      <ToastContainer />
 
       <Header></Header>
 
@@ -39,6 +43,22 @@ function App() {
           }>
         </Route>
 
+        <Route path='/myProfile'
+          element={
+            <RequireAuth>
+              <MyProfile></MyProfile>
+            </RequireAuth>
+          }>
+        </Route>
+
+        <Route path='/inventory'
+          element={
+            <RequireAuth>
+              <Inventory></Inventory>
+            </RequireAuth>
+          }>
+        </Route>
+
 
         <Route path='/dashboard'
           element={
@@ -53,9 +73,6 @@ function App() {
 
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
-
-
-      <ToastContainer />
 
     </div>
   );

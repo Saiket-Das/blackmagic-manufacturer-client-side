@@ -1,10 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWarehouse as faStock } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 
 
-const Product = ({ product, setCheckoutProduct }) => {
+const Product = ({ product }) => {
     const { name, price, stock, img, description } = product
     return (
         <div className="card lg:max-w-lg bg-base-100 shadow-md border-0">
@@ -25,13 +26,21 @@ const Product = ({ product, setCheckoutProduct }) => {
                 </p>
 
 
-                <div className="card-actions justify-center">
+                {/* <div className="card-actions justify-center">
                     <label
                         htmlFor="purchase-modal"
-                        onClick={() => setCheckoutProduct(product)}
-                        className="btn btn-primary"
+                        className="btn btn-secondary"
                     >Purchase</label>
 
+                </div> */}
+                <div className='frame card-actions justify-center'>
+                    <Link to='/inventory'>
+                        <button className="custom-btn see-all-btn">
+                            <span>
+                                Know more
+                            </span>
+                        </button>
+                    </Link>
                 </div>
 
 
