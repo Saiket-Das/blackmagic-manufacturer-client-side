@@ -1,19 +1,45 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 
 
 const MakeAdmin = ({ user, index, refetch }) => {
-    const { email } = user
+
+    const { email, role } = user
+    const handleMakeAdmin = () => {
+        fetch(`http://localhost:5000/users/admin/${email}`, {
+            method: 'PUT',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Role converted User to Admin')
+                    refetch()
+                }
+
+            })
+    }
     return (
         <tr>
             <th>{index + 1}</th>
             <td>{email}</td>
 
             <td>
-                <button
-                    className="btn btn-outline btn-xs btn-secondary">
-                    Admin
-                </button>
+                {role && <label
+                    className="text-secondary">
+                    Already Admin
+                </label>}
+
+                {
+                    !role && <button
+                        onClick={handleMakeAdmin}
+                        className="btn btn-outline btn-xs btn-secondary">
+                        Admin
+                    </button>
+                }
             </td>
 
             <td>

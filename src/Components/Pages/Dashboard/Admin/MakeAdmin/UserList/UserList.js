@@ -28,7 +28,7 @@ const UserList = () => {
             <div>
                 <h2 className='text-center text-xl mt-5 mb-5 uppercase'>Make Admin {users.length}</h2>
 
-                <div class="overflow-x-auto">
+                <div className="overflow-x-auto">
 
                     <table className="table table-zebra w-full">
                         <thead>

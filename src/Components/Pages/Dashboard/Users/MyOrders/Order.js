@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 
 const Order = ({ order, index, refetch, setDeleteOrder }) => {
-    const { productName, quantity, amount } = order
+    const { _id, productName, quantity, amount } = order
 
 
 
@@ -16,10 +17,12 @@ const Order = ({ order, index, refetch, setDeleteOrder }) => {
 
             <td>Pending</td>
             <td>
-                <button
-                    className="btn btn-outline btn-sm btn-secondary">
-                    Pay
-                </button>
+                <Link to={`payment/${_id}`}>
+                    <button
+                        className="btn btn-outline btn-sm btn-secondary">
+                        Pay
+                    </button>
+                </Link>
             </td>
 
             <td>
@@ -30,8 +33,6 @@ const Order = ({ order, index, refetch, setDeleteOrder }) => {
                 >Remove
                 </label>
             </td>
-
-
         </tr>
 
     );

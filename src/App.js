@@ -15,12 +15,20 @@ import MyProfile from './Components/Pages/MyProfile/MyProfile';
 import Inventory from './Components/Pages/Home/Products/Inventory/Inventory';
 import 'react-toastify/dist/ReactToastify.css';
 import ManageOrders from './Components/Pages/Dashboard/Admin/ManageOrders/ManageOrders';
-import MakeAdmin from './Components/Pages/Dashboard/Admin/MakeAdmin/MakeAdmin';
 import UserList from './Components/Pages/Dashboard/Admin/MakeAdmin/UserList/UserList';
+import AddProduct from './Components/Pages/Dashboard/Admin/AddProduct/AddProduct';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import useVerifyAdmin from './Components/Hooks/userVerifyAdmin';
+import auth from './firebase.init';
+import ManageProduct from './Components/Pages/Dashboard/Admin/ManageProduct/ManageProduct';
+import OrderPayment from './Components/Pages/Dashboard/Users/OrderPayment/OrderPayment';
 
 
 
 function App() {
+
+  const [user] = useAuthState(auth);
+  const [admin] = useVerifyAdmin(user)
 
   return (
     <div className="">
@@ -69,10 +77,30 @@ function App() {
               <Dashboard></Dashboard>
             </RequireAuth>
           }>
-          <Route index element={<MyOrders></MyOrders>}></Route>
+
+          {/* FOR USER  */}
+          {
+            !admin && <>
+              <Route index element={<MyOrders></MyOrders>}></Route>
+              <Route path='makeAdmin' element={<UserList></UserList>}></Route>
+            </>
+          }
           <Route path='addReview' element={<AddReview></AddReview>}></Route>
+          <Route path='payment/:orderId' element={<OrderPayment></OrderPayment>}></Route>
+
+          {/* FOR ADMIN  */}
+          {
+            admin && <>
+              <Route path='myOrder' element={<MyOrders></MyOrders>}></Route>
+              <Route index element={<UserList></UserList>}></Route>
+            </>
+          }
+
+
+
           <Route path='manageOrder' element={<ManageOrders></ManageOrders>}></Route>
-          <Route path='makeAdmin' element={<UserList></UserList>}></Route>
+          <Route path='manageProducts' element={<ManageProduct></ManageProduct>}></Route>
+          <Route path='addProduct' element={<AddProduct></AddProduct>}></Route>
         </Route>
 
 

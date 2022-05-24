@@ -1,6 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWarehouse as faStock } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
 
@@ -15,13 +13,13 @@ const Product = ({ product }) => {
                 <h2 className="text-2xl font-semibold text-center">{name}</h2>
                 <p className=''>{description}</p>
 
-                <p className='text-xl'>
-                    <span className='font-bold'>Price: </span>
-                    <span className='font-bold text-secondary'>${price} </span>
+                <p className='text-xl font-semibold'>
+                    <span>Price: </span>
+                    <span className=' text-secondary'>${price} </span>
                 </p>
 
                 <p className='mb-4'>
-                    <FontAwesomeIcon className='text-xl pr-2' icon={faStock} />
+                    {/* <FontAwesomeIcon className='text-xl pr-2' icon={faStock} /> */}
                     <span>Stocks: {stock}</span>
                 </p>
 
