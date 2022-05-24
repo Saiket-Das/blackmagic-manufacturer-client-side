@@ -18,17 +18,24 @@ const Order = ({ order, index, refetch, setDeleteOrder }) => {
             <td>Pending</td>
             <td>
                 <Link to={`payment/${_id}`}>
-                    <button
-                        className="btn btn-outline btn-sm btn-secondary">
-                        Pay
-                    </button>
+                    {
+                        amount && !order.paid && <button
+                            className="btn btn-outline btn-sm btn-secondary">
+                            Pay
+                        </button>
+                    }
                 </Link>
+
+                {
+                    amount && order.paid && <p className='text-success font-bold'>Already Paid</p>
+                }
+
             </td>
 
             <td>
                 <label
                     onClick={() => setDeleteOrder(order)}
-                    className="btn btn-outline btn-sm btn-secondary"
+                    className="btn btn-outline btn-sm btn-danger"
                     htmlFor="cancel-confirm-modal"
                 >Remove
                 </label>

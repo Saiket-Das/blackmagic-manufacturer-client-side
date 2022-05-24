@@ -5,10 +5,11 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 const CardPayment = ({ order }) => {
     const stripe = useStripe();
     const elements = useElements();
-    const { name, email, amount } = order;
+    const { _id, name, email, amount } = order;
     const [paymentError, setPaymentError] = useState('')
     const [successPayment, setSuccessPayment] = useState('')
     const [transactionId, setTransactionID] = useState('');
+    const [processing, setProcessing] = useState(false)
     const [clientSecret, setClientSecret] = useState('');
 
     useEffect(() => {
@@ -45,9 +46,11 @@ const CardPayment = ({ order }) => {
             card,
         });
 
+        setProcessing(true)
+
         if (error) {
             setPaymentError(error.message);
-            console.log(error)
+            setProcessing(false)
         }
         else {
             setPaymentError('')
@@ -77,6 +80,29 @@ const CardPayment = ({ order }) => {
             setPaymentError('');
             setTransactionID(paymentIntent.id)
             setSuccessPayment('Congrats! Your payment is done');
+
+            const paymentInfo = {
+                productId: _id,
+                transactionId: paymentIntent.id,
+            }
+
+            fetch(`http://localhost:5000/orders/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(paymentInfo)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data) {
+                        if (data) {
+                            setProcessing(false)
+                            console.log(data)
+                        }
+                    }
+                });
         }
     };
 
