@@ -3,14 +3,13 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 
 const CardPayment = ({ order }) => {
-    const { amount } = order;
-    console.log(amount)
-
-    const [paymentError, setPaymentError] = useState('')
-
     const stripe = useStripe();
     const elements = useElements();
-
+    const { name, email, amount } = order;
+    const [paymentError, setPaymentError] = useState('')
+    const [successPayment, setSuccessPayment] = useState('')
+    const [transactionId, setTransactionID] = useState('');
+    const [clientSecret, setClientSecret] = useState('');
 
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intent', {
@@ -23,8 +22,12 @@ const CardPayment = ({ order }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-            })
+                if (data?.clientSecret) {
+                    if (data.clientSecret) {
+                        setClientSecret(data.clientSecret);
+                    }
+                }
+            });
 
     }, [amount])
 
@@ -44,11 +47,37 @@ const CardPayment = ({ order }) => {
 
         if (error) {
             setPaymentError(error.message);
+            console.log(error)
         }
         else {
             setPaymentError('')
         }
 
+        // CONFIRM PAYMENT 
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: name,
+                        email: email,
+                    },
+                },
+            },
+        );
+
+
+        if (intentError) {
+            setPaymentError(intentError?.message);
+            setSuccessPayment('')
+            console.log(intentError)
+        }
+        else {
+            setPaymentError('');
+            setTransactionID(paymentIntent.id)
+            setSuccessPayment('Congrats! Your payment is done');
+        }
     };
 
     return (
@@ -69,11 +98,22 @@ const CardPayment = ({ order }) => {
                     },
                 }}
             />
-            <button className='btn btn-sm btn-secondary' type="submit" disabled={!stripe || !elements}>
+            <button className='btn btn-sm btn-secondary' type="submit" disabled={!stripe || !clientSecret}>
                 Pay
             </button>
             {paymentError &&
-                <p className='text-center text-red-600 font-semibold'>{paymentError}</p>}
+                <p className='text-center text-red-600 font-semibold'>{paymentError}</p>
+            }
+            {successPayment &&
+                <>
+                    <p className='text-center text-green-600 font-semibold'>{successPayment}
+                    </p>
+                    <p className='text-center text-secondary'> Your transaction ID:
+                        <span className='font-bold '> {transactionId}</span>
+                    </p>
+                </>
+            }
+
         </form>
 
     );
