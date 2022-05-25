@@ -21,6 +21,7 @@ import ManageProduct from './Components/Pages/Dashboard/Admin/ManageProduct/Mana
 import OrderPayment from './Components/Pages/Dashboard/Users/OrderPayment/OrderPayment';
 import RequireAdmin from './Components/Pages/Login/RequireAdmin/RequireAdmin';
 import EditProfile from './Components/Pages/Dashboard/Both/EditProfile';
+import Blogs from './Components/Pages/Blogs/Blogs';
 
 
 
@@ -41,12 +42,22 @@ function App() {
 
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
-        <Route path='/signup' element={<SignUp></SignUp>}></Route>
+
+
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
 
         <Route path='/purchase'
           element={
             <RequireAuth>
               <Checkout></Checkout>
+            </RequireAuth>
+          }>
+        </Route>
+
+        <Route path='/inventory'
+          element={
+            <RequireAuth>
+              <Inventory></Inventory>
             </RequireAuth>
           }>
         </Route>
@@ -59,13 +70,7 @@ function App() {
           }>
         </Route>
 
-        <Route path='/inventory'
-          element={
-            <RequireAuth>
-              <Inventory></Inventory>
-            </RequireAuth>
-          }>
-        </Route>
+
 
 
         <Route path='/dashboard'

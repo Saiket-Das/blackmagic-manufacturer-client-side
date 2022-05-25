@@ -8,7 +8,7 @@ import InventoryProduct from './InventoryProduct';
 
 const Inventory = () => {
     const [checkoutProduct, setCheckoutProduct] = useState(null);
-    const { data: productList, isLoading, refetch } = useQuery('products', () =>
+    const { data: productList, isLoading, refetch } = useQuery('productList', () =>
         fetch('http://localhost:5000/products')
             .then(res => res.json())
     )
