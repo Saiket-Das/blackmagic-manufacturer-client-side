@@ -33,12 +33,22 @@ const Order = ({ order, index, refetch, setDeleteOrder }) => {
             </td>
 
             <td>
-                <label
-                    onClick={() => setDeleteOrder(order)}
-                    className="btn btn-outline btn-sm btn-danger"
-                    htmlFor="cancel-confirm-modal"
-                >Remove
-                </label>
+
+                {
+                    amount && !order.paid && <label
+                        onClick={() => setDeleteOrder(order)}
+                        className="btn btn-outline btn-sm btn-danger"
+                        htmlFor="cancel-confirm-modal"
+                    >Remove
+                    </label>
+                }
+                {
+                    amount && order.paid && <label
+                        className="btn btn-outline btn-sm btn-danger  btn-disabled"
+                        htmlFor="cancel-confirm-modal"
+                    >Remove
+                    </label>
+                }
             </td>
         </tr>
 

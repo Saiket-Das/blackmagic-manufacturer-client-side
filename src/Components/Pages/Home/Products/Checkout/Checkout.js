@@ -25,7 +25,6 @@ const Checkout = ({ checkoutProduct, setCheckoutProduct, refetch }) => {
             address: data.address,
             amount: price * data.quantity
         }
-        console.log(order)
 
         fetch('http://localhost:5000/orders', {
             method: 'POST',
