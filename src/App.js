@@ -17,9 +17,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import ManageOrders from './Components/Pages/Dashboard/Admin/ManageOrders/ManageOrders';
 import UserList from './Components/Pages/Dashboard/Admin/MakeAdmin/UserList/UserList';
 import AddProduct from './Components/Pages/Dashboard/Admin/AddProduct/AddProduct';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import useVerifyAdmin from './Components/Hooks/userVerifyAdmin';
-import auth from './firebase.init';
 import ManageProduct from './Components/Pages/Dashboard/Admin/ManageProduct/ManageProduct';
 import OrderPayment from './Components/Pages/Dashboard/Users/OrderPayment/OrderPayment';
 import RequireAdmin from './Components/Pages/Login/RequireAdmin/RequireAdmin';
@@ -29,8 +26,6 @@ import EditProfile from './Components/Pages/Dashboard/Both/EditProfile';
 
 function App() {
 
-  const [user] = useAuthState(auth);
-  const [admin] = useVerifyAdmin(user)
 
   return (
     <div className="">

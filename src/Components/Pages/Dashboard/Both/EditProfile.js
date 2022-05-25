@@ -1,13 +1,12 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
 
 
 
 const EditProfile = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth)
     const email = user.email;
     // const navigate = useNavigate()
@@ -17,16 +16,16 @@ const EditProfile = () => {
             name: user.displayName,
             email: user.email,
             phone: data.phone,
-            job: data.job,
+            photo: data.photo,
             education: data.education,
             degree: data.degree,
             institution: data.institution,
             batch: data.batch,
             city: data.city,
             address: data.address,
-            facebookLink: data.facebook,
+            facebook: data.facebook,
             instagram: data.instagram,
-            skill: data.instagram,
+            skill: data.skills,
         }
         console.log(myProfile);
 
@@ -44,6 +43,7 @@ const EditProfile = () => {
                     if (data) {
                         console.log(data);
                         // navigate('/')
+                        reset()
                     }
                 }
             });
@@ -108,13 +108,13 @@ const EditProfile = () => {
                             {/* -------- Product Name -------- */}
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
-                                    <span className="label-text font-bold text-secondary">Job tille</span>
+                                    <span className="label-text font-bold text-secondary">Photo URL</span>
                                 </label>
                                 <input
-                                    type="text"
+                                    type="url"
                                     className="input input-bordered w-full max-w-xs"
-                                    placeholder='Current job (Optional)'
-                                    {...register('job')}
+                                    placeholder='Photo URL'
+                                    {...register('photo')}
                                 />
                             </div>
 
@@ -209,7 +209,7 @@ const EditProfile = () => {
                                     <span className="label-text font-bold text-secondary"> Fcaebook <link rel="apple-touch-icon" href="favicon.png" /></span>
                                 </label>
                                 <input
-                                    type="text"
+                                    type="url"
                                     className="input input-bordered w-full max-w-xs"
                                     placeholder='Your Instagram profile link'
                                     {...register('facebook')}
@@ -222,7 +222,7 @@ const EditProfile = () => {
                                     <span className="label-text font-bold text-secondary"> Instagram Link</span>
                                 </label>
                                 <input
-                                    type="text"
+                                    type="url"
                                     className="input input-bordered w-full max-w-xs"
                                     placeholder='Your Instagram profile link'
                                     {...register('instagram')}

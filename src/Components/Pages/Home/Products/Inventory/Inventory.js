@@ -17,7 +17,7 @@ const Inventory = () => {
     }
     return (
         <div>
-            <h2 className='text-2xl text-center p-10 font-bold text-secondary '> Our Inventory </h2>
+            <h2 className='mt-5 mb-10 text-3xl text-secondary font-bold text-center uppercase'>Our inventory</h2>
 
             <div className="overflow-x-auto">
 

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
+import useProducts from '../../../Hooks/useProducts';
 import Loading from '../../../Shared/Loading/Loading';
 // import Checkout from './Checkout/Checkout';
 // import { Link } from 'react-router-dom';
@@ -10,15 +11,24 @@ import './Products.css'
 
 const Products = () => {
 
+    const [products, setProducts] = useProducts()
 
-    const { data: products, isLoading, refetch } = useQuery('products', () =>
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-    )
+    // const { data: products, isLoading, refetch } = useQuery('products', () =>
+    //     fetch('http://localhost:5000/products')
+    //         .then(res => res.json())
+    // )
 
-    if (isLoading) {
-        return <Loading></Loading>
-    }
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
+
+    // const [products, setProducts] = useState([]);
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/products')
+    //         .then(res => res.json())
+    //         .then(data => setProducts(data))
+    // }, [])
+
     return (
         <div className=' mt-20 mb-28'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20  lg:px-40 p-8'>
