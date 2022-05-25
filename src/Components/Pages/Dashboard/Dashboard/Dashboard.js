@@ -26,7 +26,7 @@ const Dashboard = () => {
 
                     {/* <!-- For USER --> */}
                     {!admin && <>
-                        <li><Link to='/dashboard'> My orders</Link></li>
+                        <li><Link to='/dashboard/myOrder'> My orders</Link></li>
                         <li><Link to='/dashboard/addReview'>Add review</Link></li></>
                     }
 
@@ -37,12 +37,12 @@ const Dashboard = () => {
                             <li><Link to='/dashboard/manageOrder'> Manage Orders</Link></li>
                             <li><Link to='/dashboard/manageProducts'>Manage Product</Link></li>
                             <li><Link to='/dashboard/addProduct'>Add Product</Link></li>
-                            <li><Link to='/dashboard'>Make Admin</Link></li>
+                            <li><Link to='/dashboard/makeAdmins'>Make Admin</Link></li>
                         </>
                     }
 
                     {/* For Both ( USER & ADMIN ) */}
-                    <li><Link to='/dashboard/editProfile'> Edit Pofile</Link></li>
+                    <li><Link to='/dashboard'> Edit Pofile</Link></li>
 
 
                     {/* {

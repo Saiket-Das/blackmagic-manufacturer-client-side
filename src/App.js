@@ -22,6 +22,8 @@ import useVerifyAdmin from './Components/Hooks/userVerifyAdmin';
 import auth from './firebase.init';
 import ManageProduct from './Components/Pages/Dashboard/Admin/ManageProduct/ManageProduct';
 import OrderPayment from './Components/Pages/Dashboard/Users/OrderPayment/OrderPayment';
+import RequireAdmin from './Components/Pages/Login/RequireAdmin/RequireAdmin';
+import EditProfile from './Components/Pages/Dashboard/Both/EditProfile';
 
 
 
@@ -78,29 +80,21 @@ function App() {
             </RequireAuth>
           }>
 
-          {/* FOR USER  */}
-          {
-            !admin && <>
-              <Route index element={<MyOrders></MyOrders>}></Route>
-              <Route path='makeAdmin' element={<UserList></UserList>}></Route>
-            </>
-          }
+          {/* ---------- DASHBOARD INDEX ROUTE ---------- */}
+          <Route index element={<EditProfile></EditProfile>}></Route>
+
+          {/* ---------- DASHBOARD USER ROUTE ---------- */}
+          <Route path='myOrder' element={<MyOrders></MyOrders>}></Route>
           <Route path='addReview' element={<AddReview></AddReview>}></Route>
           <Route path='payment/:orderId' element={<OrderPayment></OrderPayment>}></Route>
 
-          {/* FOR ADMIN  */}
-          {
-            admin && <>
-              <Route path='myOrder' element={<MyOrders></MyOrders>}></Route>
-              <Route index element={<UserList></UserList>}></Route>
-            </>
-          }
-
-
-
-          <Route path='manageOrder' element={<ManageOrders></ManageOrders>}></Route>
-          <Route path='manageProducts' element={<ManageProduct></ManageProduct>}></Route>
-          <Route path='addProduct' element={<AddProduct></AddProduct>}></Route>
+          {/* ---------- DASHBOARD ADMIN ROUTE ---------- */}
+          <Route path='makeAdmin' element={<UserList></UserList>}></Route>
+          <Route path='myOrder' element={<MyOrders></MyOrders>}></Route>
+          <Route path='makeAdmin' element={<RequireAdmin><UserList></UserList></RequireAdmin>}></Route>
+          <Route path='manageOrder' element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}></Route>
+          <Route path='manageProducts' element={<RequireAdmin><ManageProduct></ManageProduct></RequireAdmin>}></Route>
+          <Route path='addProduct' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
         </Route>
 
 
