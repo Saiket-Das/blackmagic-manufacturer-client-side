@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Review from './Review';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight as faArrow } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
+    const navigate = useNavigate()
     useEffect(() => {
         fetch('http://localhost:5000/reviews')
             .then(res => res.json())
@@ -25,18 +26,17 @@ const Reviews = () => {
                 }
 
                 <div className="card review-card lg:max-w-lg bg-base-100 shadow-md">
-
-
-                    <div className="card-body items-center justify-center	">
-                        <div className='bg-gray-100 p-3 rounded-full'>
-                            <FontAwesomeIcon className='text-3xl' icon={faArrow} />
-                        </div>
-                        <Link to='/reviews'>
+                    <button className=' my-auto'
+                        onClick={() => navigate('/reviews')}>
+                        <div className="card-body items-center justify-center">
+                            <div className='bg-gray-100 p-3 rounded-full'>
+                                <FontAwesomeIcon className='text-3xl' icon={faArrow} />
+                            </div>
                             <span className='text-xl'>See more reviews</span>
-                        </Link>
-
-                    </div>
+                        </div>
+                    </button>
                 </div>
+
             </div>
         </div>
     );

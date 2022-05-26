@@ -68,6 +68,7 @@ const OrderTable = ({ order, index, refetch }) => {
                     </button>
                 }
 
+
                 {
                     amount && !order.paid && <button
                         className="btn btn-outline btn-sm btn-secondary">

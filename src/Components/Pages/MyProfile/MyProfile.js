@@ -4,8 +4,10 @@ import { useQuery } from 'react-query';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen as editProfile } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import './MyProfile.css'
+import { Link } from 'react-router-dom';
 
 
 const MyProfile = () => {
@@ -41,6 +43,13 @@ const MyProfile = () => {
                 <div>
                     <div className="col-md-4">
                         <div className="card user-card">
+
+                            <div className='text-base flex justify-end px-10 pt-5 text-secondary items-center'>
+                                <Link to='/dashboard'>
+                                    <FontAwesomeIcon className='mx-1' icon={editProfile}></FontAwesomeIcon>
+                                    <span>Edit</span>
+                                </Link>
+                            </div>
 
                             <div className="card-block">
                                 <div className="user-image">

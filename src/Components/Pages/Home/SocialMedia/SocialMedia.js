@@ -4,12 +4,14 @@ import { faFacebookF, faTwitter, faInstagram, faYoutube, faGithub } from '@forta
 import './SocialMedia.css'
 const SocialMedia = () => {
     return (
-        <div className='mt-20 mb-20'>
+        <div className='mt-28 mb-28'>
+
+            <div className='text-center'>
+                <h2 className='uppercase text-3xl font-bold text-secondary'>Follow us on social media</h2>
+                <p className='text-base font-semibold uppercase mt-5 mb-10'>Get all the latest news</p>
+            </div>
+
             <div className='container '>
-                <div className='text-center p-4'>
-                    <h2 className='uppercase text-3xl font-bold text-secondary text-center'>Follow us on social media</h2>
-                    <p className='text-base font-semibold text-center uppercase mt-5 mb-10'>Get all the latest news</p>
-                </div>
 
                 <div className='flex '>
                     <ul className="wrapper mx-auto">
