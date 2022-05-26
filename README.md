@@ -17,13 +17,13 @@ This is a webiste manufacturer company who builds or manufacture Camera & Camera
 
 ### What I use to create this website 
 
-###$ Front-end
+### Front-end
 * React JS, Tailwind (Daisyui), React Route, React Hook form, React query, React Toast, React Font awesome
 
-###$ Authentication (Login / Sign up)
+### Authentication (Login / Sign up)
 * Firebase authentication, Firebase react hooks
 
-###$ Back-end
+### Back-end
 * Node JS 
 
 ###$ Database
