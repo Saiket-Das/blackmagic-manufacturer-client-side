@@ -30,7 +30,7 @@ function App() {
 
 
   return (
-    <div className="">
+    <div>
       <ToastContainer />
 
       <Header></Header>
