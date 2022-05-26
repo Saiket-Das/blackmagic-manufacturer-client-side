@@ -26,7 +26,7 @@ This is a webiste manufacturer company who builds or manufacture Camera & Camera
 ### Back-end
 * Node JS 
 
-###$ Database
+### Database
 * Mongodb for database, Heroku for Cloud. 
 
 
