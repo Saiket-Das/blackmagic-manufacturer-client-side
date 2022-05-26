@@ -24,6 +24,9 @@ const Dashboard = () => {
                 <ul className="menu p-4 overflow-y-auto w-56 bg-base-100 text-base-content">
 
 
+                    {/* For Both ( USER & ADMIN ) */}
+                    <li><Link to='/dashboard'> Edit Pofile</Link></li>
+
                     {/* <!-- For USER --> */}
                     {!admin && <>
                         <li><Link to='/dashboard/myOrder'> My orders</Link></li>
@@ -41,17 +44,7 @@ const Dashboard = () => {
                         </>
                     }
 
-                    {/* For Both ( USER & ADMIN ) */}
-                    <li><Link to='/dashboard'> Edit Pofile</Link></li>
 
-
-                    {/* {
-                        admin && <>
-                            <li><Link to='/dashboard/users'> All Users</Link></li>
-                            <li><Link to='/dashboard/doctors'> Add a doctors</Link></li>
-                            <li><Link to='/dashboard/manageDoctors'> Manage Doctors</Link></li>
-                        </>
-                    } */}
                 </ul>
 
             </div>

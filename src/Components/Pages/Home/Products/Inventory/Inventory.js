@@ -9,7 +9,7 @@ import InventoryProduct from './InventoryProduct';
 const Inventory = () => {
     const [checkoutProduct, setCheckoutProduct] = useState(null);
     const { data: productList, isLoading, refetch } = useQuery('productList', () =>
-        fetch('http://localhost:5000/products')
+        fetch('https://dry-caverns-08201.herokuapp.com/products')
             .then(res => res.json())
     )
     if (isLoading) {

@@ -25,7 +25,7 @@ const MyOrders = () => {
     const navigate = useNavigate()
 
     const { data: orders, isLoading, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/orders?email=${email}`, {
+        fetch(`https://dry-caverns-08201.herokuapp.com/orders?email=${email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

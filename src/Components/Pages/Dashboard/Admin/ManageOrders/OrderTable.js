@@ -12,7 +12,7 @@ const OrderTable = ({ order, index, refetch }) => {
             paid: order.paid
 
         }
-        fetch(`http://localhost:5000/orders/${_id}`, {
+        fetch(`https://dry-caverns-08201.herokuapp.com/orders/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -23,9 +23,7 @@ const OrderTable = ({ order, index, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    if (data) {
-                        console.log(data)
-                    }
+                    refetch()
                 }
             });
     }

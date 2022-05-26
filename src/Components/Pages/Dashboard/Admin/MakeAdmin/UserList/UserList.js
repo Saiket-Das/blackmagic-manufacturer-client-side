@@ -10,7 +10,7 @@ const UserList = () => {
 
 
     const { data: users, isLoading, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://dry-caverns-08201.herokuapp.com/users`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

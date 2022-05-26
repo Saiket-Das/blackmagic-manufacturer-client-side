@@ -14,7 +14,7 @@ const Products = () => {
     const [products, setProducts] = useProducts()
 
     // const { data: products, isLoading, refetch } = useQuery('products', () =>
-    //     fetch('http://localhost:5000/products')
+    //     fetch('https://dry-caverns-08201.herokuapp.com/products')
     //         .then(res => res.json())
     // )
 
@@ -24,7 +24,7 @@ const Products = () => {
 
     // const [products, setProducts] = useState([]);
     // useEffect(() => {
-    //     fetch('http://localhost:5000/products')
+    //     fetch('https://dry-caverns-08201.herokuapp.com/products')
     //         .then(res => res.json())
     //         .then(data => setProducts(data))
     // }, [])

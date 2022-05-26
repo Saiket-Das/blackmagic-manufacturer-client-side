@@ -14,7 +14,7 @@ import OrderTable from './OrderTable';
 const ManageOrders = () => {
 
     const { data: orders, isLoading, refetch } = useQuery('orders', () =>
-        fetch('http://localhost:5000/orders', {
+        fetch('https://dry-caverns-08201.herokuapp.com/orders', {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

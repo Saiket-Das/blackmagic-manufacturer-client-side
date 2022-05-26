@@ -29,7 +29,7 @@ const EditProfile = () => {
         }
         console.log(myProfile);
 
-        fetch(`http://localhost:5000/users/${email}`, {
+        fetch(`https://dry-caverns-08201.herokuapp.com/users/${email}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

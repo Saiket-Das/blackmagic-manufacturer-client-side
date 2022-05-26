@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const Order = ({ order, index, refetch, setDeleteOrder }) => {
-    const { _id, productName, quantity, amount } = order
+    const { _id, productName, payment, quantity, amount } = order
 
 
 
@@ -27,7 +27,9 @@ const Order = ({ order, index, refetch, setDeleteOrder }) => {
                 </Link>
 
                 {
-                    amount && order.paid && <p className='text-success font-bold'>Already Paid</p>
+                    amount && order.paid && <>
+                        <p className='text-success font-bold'>Already Paid</p>
+                        <br /> <span>{payment}</span></>
                 }
 
             </td>

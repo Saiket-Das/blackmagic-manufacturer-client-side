@@ -26,7 +26,7 @@ const Checkout = ({ checkoutProduct, setCheckoutProduct, refetch }) => {
             amount: price * data.quantity
         }
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://dry-caverns-08201.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -45,9 +45,9 @@ const Checkout = ({ checkoutProduct, setCheckoutProduct, refetch }) => {
 
         const updatedStock = stock - data.quantity;
         const currentStock = { stock: updatedStock }
-        const url = `http://localhost:5000/products/${_id}`
+        const url = `https://dry-caverns-08201.herokuapp.com/products/${_id}`
         console.log(url)
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://dry-caverns-08201.herokuapp.com/products/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

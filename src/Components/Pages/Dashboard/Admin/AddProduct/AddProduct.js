@@ -34,7 +34,7 @@ const AddProduct = () => {
                         img: imageURL
                     }
 
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://dry-caverns-08201.herokuapp.com/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

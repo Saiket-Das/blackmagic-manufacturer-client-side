@@ -21,7 +21,7 @@ const AddReview = () => {
         }
         console.log(review)
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://dry-caverns-08201.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -31,9 +31,9 @@ const AddReview = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
-                    // toast.success('Thanks for your feedback')
-                    // e.target.reset();
-                    // navigate('/')
+                    toast.success('Thanks for your feedback')
+                    e.target.reset();
+                    navigate('/reviews')
                 }
             })
     }

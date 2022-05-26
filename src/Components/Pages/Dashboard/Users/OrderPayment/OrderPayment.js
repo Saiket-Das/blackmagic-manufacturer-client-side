@@ -15,7 +15,7 @@ const OrderPayment = () => {
     const { orderId } = useParams();
 
     const { data: order, isLoading, refetch } = useQuery('order', () =>
-        fetch(`http://localhost:5000/orders/${orderId}`, {
+        fetch(`https://dry-caverns-08201.herokuapp.com/orders/${orderId}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

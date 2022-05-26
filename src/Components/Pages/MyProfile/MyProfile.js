@@ -16,7 +16,7 @@ const MyProfile = () => {
     const email = user.email;
 
     const { data: profileDetails, isLoading } = useQuery('products', () =>
-        fetch(`http://localhost:5000/users/${email}`, {
+        fetch(`https://dry-caverns-08201.herokuapp.com/users/${email}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',

@@ -8,7 +8,7 @@ const SingleProduct = ({ product, index, refetch }) => {
     const handleProductDelete = (id) => {
         const confirm = window.confirm('Are you sure?')
         if (confirm) {
-            fetch(`http://localhost:5000/products/${id}`, {
+            fetch(`https://dry-caverns-08201.herokuapp.com/products/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`

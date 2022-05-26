@@ -22,6 +22,7 @@ import OrderPayment from './Components/Pages/Dashboard/Users/OrderPayment/OrderP
 import RequireAdmin from './Components/Pages/Login/RequireAdmin/RequireAdmin';
 import EditProfile from './Components/Pages/Dashboard/Both/EditProfile';
 import Blogs from './Components/Pages/Blogs/Blogs';
+import AllReview from './Components/Pages/Dashboard/Users/AllReview/AllReview';
 
 
 
@@ -45,6 +46,7 @@ function App() {
 
 
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/reviews' element={<AllReview></AllReview>}></Route>
 
         <Route path='/purchase'
           element={
@@ -86,7 +88,7 @@ function App() {
           {/* ---------- DASHBOARD USER ROUTE ---------- */}
           <Route path='myOrder' element={<MyOrders></MyOrders>}></Route>
           <Route path='addReview' element={<AddReview></AddReview>}></Route>
-          <Route path='payment/:orderId' element={<OrderPayment></OrderPayment>}></Route>
+          <Route path='myOrder/payment/:orderId' element={<OrderPayment></OrderPayment>}></Route>
 
           {/* ---------- DASHBOARD ADMIN ROUTE ---------- */}
           <Route path='makeAdmin' element={<UserList></UserList>}></Route>
